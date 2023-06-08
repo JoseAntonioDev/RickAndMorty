@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class ListOfCharactersViewController: UIViewController {
+class ListOfCharactersViewController: BaseViewController {
 
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,11 +23,10 @@ class ListOfCharactersViewController: UIViewController {
     var viewModel: ListOfCharactersViewModelProtocol?
     
     //MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(with: viewModel)
-        configureUI()
+        self.title = Constants.navigationBarTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +34,6 @@ class ListOfCharactersViewController: UIViewController {
         viewModel?.characterSelected.value = (nil, nil)
         configureCollectionView()
         collectionView.reloadData()
-        hideKeyboardWhenTappedAround()
     }
     
     deinit {
@@ -50,31 +48,11 @@ class ListOfCharactersViewController: UIViewController {
             self?.dataSource?.reloadData()
         }
         
-        viewModel?.isLoading.observe(on: self, observerBlock: { [weak self] isLoading in
-            isLoading ? self?.showLoading() : self?.dismiss(animated: false, completion: nil)
-        })
-        
         viewModel?.characterSelected.observe(on: self) { [weak self] characterSelected in
             if characterSelected.0 != nil {
                 self?.pushProfileViewController(with: characterSelected.0, and: characterSelected.1 as? UIImage)
             }
         }
-    }
-    
-    private func configureUI(){
-        let githubButton = UIButton(type: .custom)
-        githubButton.setImage(UIImage(named: "github"), for: .normal)
-        githubButton.addTarget(self, action: #selector(onGithubButtonPressed(sender:)), for: .touchUpInside)
-        githubButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: githubButton)
-        self.view.backgroundColor = .black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.backgroundColor = .black
-        self.title = Constants.navigationBarTitle        
-    }
-    
-    @objc private func onGithubButtonPressed(sender: UIButton) {
-        openGit()
     }
     
     private func configureCollectionView() {
@@ -91,25 +69,6 @@ class ListOfCharactersViewController: UIViewController {
         dataSource?.registerCells()
     }
     
-    func showLoading() {
-        let alert = UIAlertController(title: nil, message: "Loading", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = .medium
-        loadingIndicator.startAnimating()
-
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func openGit() {
-        guard let url = URL(string: "https://github.com/JoseAntonioDev") else {
-          return
-        }
-        
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-    
     func pushProfileViewController(with character: Character?, and characterImage: UIImage?) {
         guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else { return }
         profileViewController.characterSelected = character
@@ -118,18 +77,4 @@ class ListOfCharactersViewController: UIViewController {
 
     }
     
-}
-
-//MARK: - Keyboard methods
-extension UIViewController {
-    // These methods will be useful in the future when We implement a searchBar
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
 }

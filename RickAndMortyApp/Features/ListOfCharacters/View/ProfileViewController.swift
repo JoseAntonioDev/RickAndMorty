@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
 
     //MARK: Outlets
     @IBOutlet weak var characterImage: UIImageView!
@@ -20,35 +20,21 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var episodesLabel: UILabel!
 
     //MARK: Properties
+    enum Constants {
+        static let urlEpisodesToTrim: String = "https://rickandmortyapi.com/api/episode/"
+    }
     var characterSelected: Character?
     var imageToSet: UIImage?
     
     //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideKeyboardWhenTappedAround()
+        characterImage.image = imageToSet
+        self.title = characterSelected?.name
+        setLabels()
     }
     
     //MARK: - Methods
-    private func configureUI(){
-        setLabels()
-        characterImage.image = imageToSet
-        let githubButton = UIButton(type: .custom)
-        githubButton.setImage(UIImage(named: "github"), for: .normal)
-        githubButton.addTarget(self, action: #selector(onGithubButtonPressed(sender:)), for: .touchUpInside)
-        githubButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: githubButton)
-        self.view.backgroundColor = .black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.backgroundColor = .black
-        self.title = characterSelected?.name
-    }
-    
     private func setLabels(){
         statusLabel.text = "Status: \(characterSelected?.status ?? "?")"
         genderLabel.text = "Gender: \(characterSelected?.gender ?? "?")"
@@ -61,7 +47,7 @@ class ProfileViewController: UIViewController {
     func trimEpisodes(_ episodesToTrim: [String]) -> String {
         var episodes: [String] = []
         episodesToTrim.forEach { episode in
-            let stringToAppend = episode.replacingOccurrences(of: "https://rickandmortyapi.com/api/episode/", with: "", options: [.regularExpression, .caseInsensitive])
+            let stringToAppend = episode.replacingOccurrences(of: Constants.urlEpisodesToTrim, with: "", options: [.regularExpression, .caseInsensitive])
             episodes.append(stringToAppend)
         }
         
@@ -69,17 +55,7 @@ class ProfileViewController: UIViewController {
         let lastEp = episodes.last ?? ""
         let episodesString = (firstEp != lastEp) ? ("Episodes: " + firstEp + " ~ " + lastEp) : ("Episode: " + firstEp)
 
-        
         return episodesString
-    }
-    
-    @objc private func onGithubButtonPressed(sender: UIButton) {
-        openGit()
-    }
-    
-    func openGit() {
-        guard let url = URL(string: "https://github.com/JoseAntonioDev") else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
 }

@@ -28,7 +28,6 @@ class ListOfCharactersCollectionViewDelegate: NSObject, UICollectionViewDelegate
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCell", for: indexPath) as? CharacterCell else { return }
                 cell.viewModel = self.viewModel
                 cell.configure(with: character)
-                let cellSelected = self.viewModel?.cells.value.first(where: {$1 == indexPath.item})
                 self.viewModel?.characterSelected.value = (cell.characterSelected , cell.characterImage.image)
             }
         }

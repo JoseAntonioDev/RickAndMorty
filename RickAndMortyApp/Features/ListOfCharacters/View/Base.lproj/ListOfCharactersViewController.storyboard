@@ -141,10 +141,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OcO-mg-gj2">
-                                <rect key="frame" x="0.0" y="59" width="393" height="339.66666666666669"/>
+                                <rect key="frame" x="0.0" y="69" width="393" height="339.66666666666669"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SbM-b2-lqF">
-                                <rect key="frame" x="20" y="448.66666666666674" width="353" height="222"/>
+                                <rect key="frame" x="20" y="458.66666666666674" width="353" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="107-PO-Ib4">
                                         <rect key="frame" x="156" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
@@ -189,7 +189,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9dj-XM-V71" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SbM-b2-lqF" secondAttribute="bottom" constant="20" id="2Sv-Ba-l8i"/>
-                            <constraint firstItem="OcO-mg-gj2" firstAttribute="top" secondItem="9dj-XM-V71" secondAttribute="top" id="7Ff-Ra-DSL"/>
+                            <constraint firstItem="OcO-mg-gj2" firstAttribute="top" secondItem="9dj-XM-V71" secondAttribute="top" constant="10" id="7Ff-Ra-DSL"/>
                             <constraint firstItem="SbM-b2-lqF" firstAttribute="top" secondItem="OcO-mg-gj2" secondAttribute="bottom" constant="50" id="Uhi-cC-ob2"/>
                             <constraint firstItem="9dj-XM-V71" firstAttribute="trailing" secondItem="OcO-mg-gj2" secondAttribute="trailing" id="Xds-uz-j99"/>
                             <constraint firstItem="OcO-mg-gj2" firstAttribute="height" secondItem="V70-JC-fGp" secondAttribute="height" multiplier="0.39867" id="cGY-kp-UP5"/>
