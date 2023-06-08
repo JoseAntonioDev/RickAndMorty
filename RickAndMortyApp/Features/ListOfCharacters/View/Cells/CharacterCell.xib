@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CharacterCell" reuseIdentifier="CharacterCell" id="ZpC-w6-hPj" customClass="CharacterCell" customModule="RickAndMortyApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="139" height="204"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lwe-cw-cHB">
+                <rect key="frame" x="0.0" y="0.0" width="139" height="204"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="B0X-EE-eWT">
+                        <rect key="frame" x="51" y="83.5" width="37" height="37"/>
+                    </activityIndicatorView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sx2-9h-GED">
+                        <rect key="frame" x="34.5" y="67" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="0B4-zL-whP"/>
+                            <constraint firstAttribute="width" constant="70" id="WLk-sb-S19"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTc-XN-CFO">
+                        <rect key="frame" x="48.5" y="145" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xTc-XN-CFO" firstAttribute="centerX" secondItem="Lwe-cw-cHB" secondAttribute="centerX" id="1R9-jq-yzD"/>
+                    <constraint firstItem="B0X-EE-eWT" firstAttribute="centerY" secondItem="Lwe-cw-cHB" secondAttribute="centerY" id="3Kz-35-mgh"/>
+                    <constraint firstItem="xTc-XN-CFO" firstAttribute="top" secondItem="sx2-9h-GED" secondAttribute="bottom" constant="8" id="JGI-hu-GHF"/>
+                    <constraint firstItem="sx2-9h-GED" firstAttribute="centerY" secondItem="Lwe-cw-cHB" secondAttribute="centerY" id="PoC-qm-o8V"/>
+                    <constraint firstItem="sx2-9h-GED" firstAttribute="centerX" secondItem="Lwe-cw-cHB" secondAttribute="centerX" id="Sc3-hL-nJN"/>
+                    <constraint firstItem="B0X-EE-eWT" firstAttribute="centerX" secondItem="Lwe-cw-cHB" secondAttribute="centerX" id="Yq7-ho-6DC"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <size key="customSize" width="139" height="204"/>
+            <connections>
+                <outlet property="activityIndicator" destination="B0X-EE-eWT" id="OAZ-hW-NgJ"/>
+                <outlet property="characterImage" destination="sx2-9h-GED" id="llw-cf-s1C"/>
+                <outlet property="characterName" destination="xTc-XN-CFO" id="wLH-dh-y3O"/>
+            </connections>
+            <point key="canvasLocation" x="-418" y="90"/>
+        </collectionViewCell>
+    </objects>
+</document>
