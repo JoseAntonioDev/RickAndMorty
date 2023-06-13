@@ -50,10 +50,9 @@
                                     <action selector="onStartButtonPressed:" destination="x5d-FX-g62" eventType="touchUpInside" id="oUz-oJ-1ui"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5D3-Br-95f">
-                                <rect key="frame" x="178" y="408" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5D3-Br-95f">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" systemColor="systemRedColor"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Dq-j6-GI8"/>
@@ -64,6 +63,8 @@
                             <constraint firstItem="spE-nh-0h3" firstAttribute="leading" secondItem="7Dq-j6-GI8" secondAttribute="leading" id="Vga-ZQ-uKN"/>
                             <constraint firstItem="spE-nh-0h3" firstAttribute="trailing" secondItem="7Dq-j6-GI8" secondAttribute="trailing" id="cMF-PO-on1"/>
                             <constraint firstAttribute="bottom" secondItem="spE-nh-0h3" secondAttribute="bottom" id="nCf-2N-8bX"/>
+                            <constraint firstItem="5D3-Br-95f" firstAttribute="centerY" secondItem="Xbw-yS-wSw" secondAttribute="centerY" id="q1e-zu-Pad"/>
+                            <constraint firstItem="5D3-Br-95f" firstAttribute="centerX" secondItem="Xbw-yS-wSw" secondAttribute="centerX" id="uxJ-Ex-F9L"/>
                             <constraint firstItem="7Dq-j6-GI8" firstAttribute="bottom" secondItem="6mM-UV-yz7" secondAttribute="bottom" constant="60" id="y1R-9G-Hel"/>
                         </constraints>
                     </view>
@@ -218,6 +219,9 @@
         <image name="welcome" width="754" height="770"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
